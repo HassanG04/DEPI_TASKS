@@ -7,3 +7,7 @@ dist/
 build/
 *.egg-info/
 data/processed/
+
+.vercel/
+.env*
+!.env.example

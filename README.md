@@ -1,99 +1,121 @@
-# Supermarket Sales ETL
+<p align="center">
+  <img src="assets/images/depi.png" alt="Digital Egypt Pioneers Initiative logo" width="150">
+</p>
 
-A reproducible data-engineering implementation of the DEPI supermarket assignment. The original notebook and brief remain in `assignment panda/`; the production path is the tested Python package in `src/supermarket_etl`.
+# DEPI Learning Journey
 
-## Problem
+An evidence-based website documenting what I learned through the Digital Egypt Pioneers Initiative: Python foundations, API ingestion, pandas, SQL, browser automation, Flask, and the process of turning notebook exercises into tested software.
 
-The source CSV contains inconsistent categorical values, missing dates and prices, and duplicate invoice identifiers. Direct notebook analysis silently mixes those problems into business totals. This pipeline separates rejected records, records every quality decision, and computes the requested metrics only from validated transactions.
+<p align="center">
+  <a href="https://depi-tasks-pi.vercel.app/">Live website</a> ·
+  <a href="https://github.com/HassanG04/DEPI_TASKS">GitHub repository</a>
+</p>
 
-## Architecture
+The site borrows the visual language and motion principles of my portfolio—glass surfaces, gradient accents, reveal animations, counters, a particle background, light/dark themes, and reduced-motion support—while using a separate DEPI identity and content structure.
+
+## What this repository contains
+
+| Area | Evidence | Status |
+|---|---|---|
+| Python foundations | `learning/python/python_foundations.ipynb` | Coursework covering control flow, collections, functions, modules, and OOP |
+| Advanced Python and APIs | `learning/advanced-python/weather_etl.ipynb` | Secure weather-ingestion prototype using an environment variable |
+| Pandas and analytics | `assignment panda/assignment.ipynb` | Original supermarket profiling, cleaning, feature engineering, and analysis |
+| Data engineering | `src/supermarket_etl/` | Reusable validated ETL, reject handling, reconciliation, CLI, tests, and CI |
+| SQL Server | `learning/sql/banking_queries.sql` | CTEs, ranking windows, joins, date/null/string functions, and user-defined functions |
+| Flask | `learning/flask/flask_intro.ipynb` | Introductory route and template-rendering exercise |
+| Web scraping | Documented on the site | Early Selenium exercises; not presented as a production scraper |
+
+## Website architecture
 
 ```mermaid
 flowchart LR
-    A[Raw CSV] --> B[Schema validation]
-    B --> C[Type coercion and normalization]
-    C --> D{Valid row?}
-    D -- no --> E[Reject CSV with reason]
-    D -- yes --> F[Derived date and satisfaction fields]
-    F --> G[Clean CSV]
-    G --> H[Business summary JSON]
-    G --> I[Data-quality JSON]
+    A[DEPI coursework] --> B[Curated learning evidence]
+    B --> C[Static HTML]
+    B --> D[Accessible CSS and motion]
+    B --> E[Vanilla JavaScript interactions]
+    C --> F[Vercel]
+    D --> F
+    E --> F
 ```
 
-The run is idempotent: the same input and configuration overwrite the same four outputs. A scheduler, warehouse, Spark, and database were intentionally not added—the source is a single 1,014-row file and has no incremental or multi-service workload to justify them.
+The website is intentionally static. It needs no database or server-side framework: its job is to present verified learning evidence quickly, securely, and inexpensively.
 
-## Quality rules
+## Run the website locally
 
-- Require the complete source schema before processing.
-- Treat `invoice_id` as the transaction business key and reject later duplicates.
-- Coerce numeric and date fields and reject rows missing critical values.
-- Require quantity >= 1, non-negative prices/sales, and ratings from 0 to 10.
-- Reconstruct a missing unit price from `cost_of_goods_sold / quantity` when both values are valid.
-- Normalize category casing and the `E-wallet`/`Ewallet` spelling.
-- Reconcile every accepted row so `cost_of_goods_sold + gross_income == sales` to four decimals.
+From the repository root:
 
-## Verified run
+```bash
+python -m http.server 8000
+```
 
-Run on the committed dataset on 15 September 2026:
+Open `http://localhost:8000`.
 
-| Measure | Result |
-|---|---:|
-| Input rows | 1,014 |
-| Accepted rows | 959 |
-| Rejected rows | 55 |
-| Duplicate invoice rows | 14 |
-| Unit prices reconstructed | 24 |
-| Revenue reconciliation failures | 0 |
-| Total validated revenue | 306,565.21 |
-| Average transaction value | 319.67 |
-| Satisfied transactions | 50.26% |
-
-These are measurements from the local pipeline run, not claims about production usage.
-
-## Run locally
+## Run the ETL and tests
 
 ```bash
 python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
+# Windows: .venv\Scripts\activate
+# Linux/macOS: source .venv/bin/activate
 python -m pip install -e ".[dev]"
-supermarket-etl
-```
-
-Outputs are written to `data/processed/`:
-
-- `supermarket_clean.csv`
-- `supermarket_rejects.csv`
-- `data_quality.json`
-- `business_summary.json`
-
-Use another source or destination with:
-
-```bash
-supermarket-etl --input path/to/source.csv --output-dir path/to/output
-```
-
-## Test and quality checks
-
-```bash
 pytest -q
 ruff check src tests
 ruff format --check src tests
 ```
 
-GitHub Actions repeats linting, unit tests, and a full pipeline run on every push and pull request. Tests cover schema rejection, duplicate handling, missing critical values, payment normalization, reconciliation, and business aggregation.
+The current supermarket pipeline remains the strongest engineered artifact. On the committed teaching dataset, its verified run processed 1,014 rows: 959 accepted, 55 rejected, 14 duplicate invoices, 24 reconstructed unit prices, and zero revenue-reconciliation failures. These are dataset measurements, not production-usage claims.
+
+## Weather notebook security
+
+The original local training notebook contained a real-looking OpenWeatherMap API key and a shared classroom SQL password. Neither credential is published here.
+
+The cleaned notebook expects:
+
+```bash
+OPENWEATHER_API_KEY=replace_with_your_own_key
+```
+
+Copy `.env.example` to your local secret-management approach or set the variable in your shell. Never commit the value. If the original API key was active, it should be revoked or rotated.
+
+## Separate future project: weather forecasting
+
+The current notebook retrieves present conditions; it does **not** train a forecasting model. A future independent repository will contain:
+
+1. Historical, scheduled and idempotent weather ingestion.
+2. Time-aware validation and seasonal baselines.
+3. Forecast model comparison with city-level error analysis.
+4. Versioned preprocessing and inference through an API.
+5. A dedicated forecast interface, Docker, CI/CD, monitoring, and verified cloud deployment.
+
+Keeping it separate prevents this learning repository from becoming a mixture of unrelated concerns.
+
+## Vercel deployment
+
+Production: **[depi-tasks-pi.vercel.app](https://depi-tasks-pi.vercel.app/)**
+
+The repository includes `vercel.json`, explicitly selects Vercel's framework-neutral static mode, and requires no build or installation command. This override is important because the same repository also contains a Python ETL package; without it, automatic framework detection would incorrectly expect a Python web entry point.
+
+```bash
+vercel deploy          # preview
+vercel deploy --prod   # production after preview verification
+```
+
+The production deployment was promoted from a browser-verified preview. Vercel Git integration can be enabled after adding the GitHub login connection to the Vercel account; until then, releases use the authenticated CLI workflow above.
 
 ## Repository map
 
 ```text
-src/supermarket_etl/       reusable ingestion, validation, transformation, analytics
-tests/                     deterministic unit and data-quality tests
-assignment panda/          original assignment, source data, and notebook
-.github/workflows/ci.yml   automated verification
-pyproject.toml             package and tool configuration
+assets/                         website styles, behavior, and DEPI image
+learning/                       curated and sanitized learning artifacts
+assignment panda/               original supermarket assignment
+src/supermarket_etl/            reusable ETL implementation
+tests/                          pipeline and static-site checks
+index.html                      deployed learning showcase
+vercel.json                     Vercel headers and static configuration
+.env.example                    variable names only; no credentials
 ```
 
 ## Limitations
 
-- The dataset is a static teaching sample; no incremental ingestion is needed.
-- Rejected rows preserve a reason but are not automatically corrected when the missing value cannot be inferred.
-- City and branch are retained as independent source attributes because the dataset provides no authoritative mapping between them.
+- The Selenium material is learning evidence and contains brittle selectors; the site does not claim a maintained scraper.
+- SQL scripts depend on the classroom banking schema and need a portable schema/fixture before automated execution.
+- The weather notebook demonstrates current-condition ingestion, not forecasting quality.

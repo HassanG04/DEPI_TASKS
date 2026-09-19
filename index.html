@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Hassan Gebril's DEPI learning journey across Python, APIs, pandas, SQL, web scraping, Flask, and production-minded data engineering.">
+  <meta name="theme-color" content="#07111f">
+  <meta property="og:title" content="DEPI Learning Journey — Hassan Gebril">
+  <meta property="og:description" content="A documented path from Python foundations to tested data-engineering projects.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://depi-tasks-pi.vercel.app/">
+  <meta property="og:image" content="/assets/images/depi.png">
+  <title>DEPI Learning Journey — Hassan Gebril</title>
+  <link rel="icon" href="assets/images/depi.png" type="image/png">
+  <link rel="canonical" href="https://depi-tasks-pi.vercel.app/">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script>
+    (() => {
+      const saved = localStorage.getItem('depi-theme');
+      const preferred = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.dataset.theme = saved || preferred;
+    })();
+  </script>
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"><span id="readingProgress"></span></div>
+  <canvas id="particleCanvas" aria-hidden="true"></canvas>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="siteHeader">
+    <a class="brand" href="#home" aria-label="DEPI learning journey home">
+      <span class="brand-mark">HG</span>
+      <span><strong>DEPI</strong><small>Learning Journey</small></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteNav">
+      <span class="sr-only">Toggle navigation</span><span></span><span></span><span></span>
+    </button>
+    <nav id="siteNav" aria-label="Primary navigation">
+      <a href="#journey">Journey</a>
+      <a href="#projects">Projects</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#next">Next build</a>
+      <a class="nav-github" href="https://github.com/HassanG04/DEPI_TASKS" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch color theme"><span aria-hidden="true">◐</span></button>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="hero-orb orb-one" aria-hidden="true"></div>
+      <div class="hero-orb orb-two" aria-hidden="true"></div>
+      <div class="hero-copy reveal-left">
+        <p class="eyebrow"><span></span> Digital Egypt Pioneers Initiative</p>
+        <h1>From Python foundations to <em>engineered data systems.</em></h1>
+        <p class="hero-lead">A transparent learning log showing what I built, what each exercise taught me, and how early notebooks are becoming reusable, tested projects.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#journey">Explore the journey <span aria-hidden="true">↓</span></a>
+          <a class="button button-secondary" href="https://github.com/HassanG04/DEPI_TASKS" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a>
+        </div>
+        <dl class="hero-stats" aria-label="Learning journey summary">
+          <div><dt class="counter" data-target="7">0</dt><dd>learning areas</dd></div>
+          <div><dt class="counter" data-target="3">0</dt><dd>featured builds</dd></div>
+          <div><dt class="counter" data-target="1">0</dt><dd>tested ETL package</dd></div>
+        </dl>
+      </div>
+
+      <div class="hero-visual reveal-right" aria-label="Learning path from source data to delivery">
+        <div class="logo-shell"><img src="assets/images/depi.png" alt="Digital Egypt Pioneers Initiative logo" width="225" height="224"></div>
+        <div class="pipeline-card">
+          <p>Learning pipeline</p>
+          <ol>
+            <li><span>01</span><strong>Collect</strong><small>APIs · browser automation</small></li>
+            <li><span>02</span><strong>Transform</strong><small>Python · pandas</small></li>
+            <li><span>03</span><strong>Store</strong><small>SQL · data modelling</small></li>
+            <li><span>04</span><strong>Deliver</strong><small>Flask · Vercel</small></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="journey">
+      <div class="section-heading reveal">
+        <p class="eyebrow"><span></span> Learning timeline</p>
+        <h2>Skills built through actual exercises</h2>
+        <p>Each stage is tied to source material in the repository. “Explored” means coursework; “engineered” means the idea was refactored into reusable, tested code.</p>
+      </div>
+
+      <div class="journey-grid">
+        <article class="journey-card reveal" style="--delay: 0ms">
+          <span class="journey-number">01</span><span class="status explored">Foundations</span>
+          <h3>Python programming</h3>
+          <p>Practised types, control flow, collections, functions, modules, input validation, and object-oriented modelling through calculators, banking, library, and hospital exercises.</p>
+          <ul><li>Functions and modular thinking</li><li>Lists, dictionaries, and loops</li><li>Classes and object relationships</li></ul>
+          <a href="learning/python/python_foundations.ipynb">Open coursework notebook <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="journey-card reveal" style="--delay: 70ms">
+          <span class="journey-number">02</span><span class="status project">Project seed</span>
+          <h3>Advanced Python & APIs</h3>
+          <p>Collected current weather for Egyptian cities with HTTP requests, converted nested JSON into a DataFrame, and enriched records with geographic and weather categories.</p>
+          <ul><li>REST API requests and errors</li><li>JSON-to-DataFrame extraction</li><li>Validation and enrichment</li></ul>
+          <a href="learning/advanced-python/weather_etl.ipynb">Open secure notebook <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="journey-card reveal" style="--delay: 140ms">
+          <span class="journey-number">03</span><span class="status engineered">Engineered</span>
+          <h3>Pandas & data quality</h3>
+          <p>Profiled supermarket transactions, corrected types and categories, handled missing values and duplicates, derived date features, and answered business questions.</p>
+          <ul><li>Profiling and schema checks</li><li>Cleaning and feature engineering</li><li>Aggregations and visual analysis</li></ul>
+          <a href="#supermarket-project">See the ETL upgrade <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="journey-card reveal" style="--delay: 210ms">
+          <span class="journey-number">04</span><span class="status practised">Practised</span>
+          <h3>SQL & database programming</h3>
+          <p>Worked with string, null, date, and conversion functions; joins; common table expressions; ranking windows; scalar functions; and table-valued functions.</p>
+          <ul><li>CTEs and RANK()</li><li>Scalar and table-valued functions</li><li>Relational joins and filtering</li></ul>
+          <a href="learning/sql/banking_queries.sql">Review SQL practice <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="journey-card reveal" style="--delay: 280ms">
+          <span class="journey-number">05</span><span class="status explored">Explored</span>
+          <h3>Web scraping & Selenium</h3>
+          <p>Explored browser configuration, element locators, pagination, and extraction into tabular records through job, quote, and book-listing exercises.</p>
+          <ul><li>Browser automation</li><li>Selectors and pagination</li><li>Deduplication by stable URL</li></ul>
+          <span class="card-note">Early prototype; selectors require hardening before reuse.</span>
+        </article>
+
+        <article class="journey-card reveal" style="--delay: 350ms">
+          <span class="journey-number">06</span><span class="status practised">Practised</span>
+          <h3>Flask & web delivery</h3>
+          <p>Connected Python routes with HTML templates and frontend assets, establishing the boundary between data logic and a user-facing web application.</p>
+          <ul><li>Application routes</li><li>Template rendering</li><li>Static CSS and JavaScript</li></ul>
+          <a href="learning/flask/flask_intro.ipynb">Open Flask exercise <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="journey-card journey-card-wide reveal" style="--delay: 420ms">
+          <span class="journey-number">07</span><span class="status engineered">Current focus</span>
+          <h3>Production-minded engineering</h3>
+          <p>The original supermarket notebook was converted into a package with explicit data-quality rules, rejected-record handling, idempotent outputs, a command-line interface, unit tests, and CI. This website applies the same idea to communication: evidence, decisions, and limitations stay visible.</p>
+          <div class="tag-row"><span>Reusable modules</span><span>pytest</span><span>CI</span><span>Documentation</span><span>Vercel</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section projects-section" id="projects">
+      <div class="section-heading reveal">
+        <p class="eyebrow"><span></span> Featured evidence</p>
+        <h2>Assignments becoming projects</h2>
+        <p>The emphasis is progression: preserve the learning artifact, identify its limitations, then engineer a stronger system.</p>
+      </div>
+
+      <article class="project project-weather reveal">
+        <div class="project-copy">
+          <div class="project-kicker"><span>Advanced Python</span><span>API ingestion</span></div>
+          <h3>Egypt Weather ETL prototype</h3>
+          <p>The notebook calls OpenWeatherMap for ten Egyptian cities, normalizes the response into a DataFrame, maps cities to regions, derives temperature and humidity categories, and timestamps ingestion.</p>
+          <div class="flow" aria-label="Weather prototype flow">
+            <span>OpenWeatherMap</span><i>→</i><span>Requests</span><i>→</i><span>DataFrame</span><i>→</i><span>Validation</span>
+          </div>
+          <div class="decision"><strong>Security improvement</strong><p>The publishable notebook reads the API key from an environment variable. Credentials from the local training brief are intentionally excluded.</p></div>
+          <a class="text-link" href="learning/advanced-python/weather_etl.ipynb">Inspect the cleaned notebook <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="weather-terminal" aria-label="Example weather record structure">
+          <div class="terminal-head"><span></span><span></span><span></span><small>weather_record.json</small></div>
+          <pre><code>{
+  "city": "Cairo",
+  "region": "Greater Cairo",
+  "temperature_c": 27.4,
+  "humidity_pct": 48,
+  "temperature_category": "Mild",
+  "ingested_at": "UTC timestamp"
+}</code></pre>
+        </div>
+      </article>
+
+      <article class="project project-supermarket reveal" id="supermarket-project">
+        <div class="project-copy">
+          <div class="project-kicker"><span>Pandas</span><span>Data engineering</span></div>
+          <h3>Supermarket Sales ETL</h3>
+          <p>A notebook analysis evolved into a repeatable pipeline that validates the source schema, normalizes values, rejects invalid rows, reconciles financial fields, and writes clean analytical outputs.</p>
+          <div class="metric-grid">
+            <div><strong>1,014</strong><span>input rows</span></div><div><strong>959</strong><span>accepted</span></div><div><strong>55</strong><span>rejected</span></div><div><strong>0</strong><span>reconciliation failures</span></div>
+          </div>
+          <p class="measurement-note">Measured from the committed teaching dataset; not production traffic.</p>
+          <div class="project-links"><a class="text-link" href="assignment%20panda/assignment.ipynb">Original notebook <span aria-hidden="true">→</span></a><a class="text-link" href="src/supermarket_etl/pipeline.py">Engineered pipeline <span aria-hidden="true">→</span></a></div>
+        </div>
+        <div class="quality-stack" aria-label="ETL stages">
+          <div><span>01</span><strong>Ingest</strong><small>CSV schema boundary</small></div>
+          <div><span>02</span><strong>Validate</strong><small>types · ranges · duplicates</small></div>
+          <div><span>03</span><strong>Transform</strong><small>normalize · enrich · reconcile</small></div>
+          <div><span>04</span><strong>Publish</strong><small>clean · rejects · metrics</small></div>
+        </div>
+      </article>
+
+      <article class="project project-sql reveal">
+        <div class="project-copy">
+          <div class="project-kicker"><span>SQL Server</span><span>Advanced queries</span></div>
+          <h3>Banking SQL practice</h3>
+          <p>Exercises cover reusable database logic rather than only simple selects: a CTE ranks balances, window functions preserve ties, and scalar/table-valued functions package common queries.</p>
+          <a class="text-link" href="learning/sql/banking_queries.sql">Read the SQL source <span aria-hidden="true">→</span></a>
+        </div>
+        <pre class="sql-card"><code><span>WITH</span> ranked_accounts <span>AS</span> (
+  <span>SELECT</span> account_id,
+         balance,
+         <b>RANK()</b> <span>OVER</span> (
+           <span>ORDER BY</span> balance <span>DESC</span>
+         ) <span>AS</span> balance_rank
+  <span>FROM</span> account
+)
+<span>SELECT</span> *
+<span>FROM</span> ranked_accounts
+<span>WHERE</span> balance_rank &lt;= 3;</code></pre>
+      </article>
+    </section>
+
+    <section class="section evidence-section" id="evidence">
+      <div class="section-heading reveal">
+        <p class="eyebrow"><span></span> Evidence map</p>
+        <h2>What each artifact demonstrates</h2>
+      </div>
+      <div class="evidence-table-wrap reveal">
+        <table>
+          <thead><tr><th>Artifact</th><th>What I practised</th><th>Current maturity</th><th>Next improvement</th></tr></thead>
+          <tbody>
+            <tr><td>Python foundations</td><td>Control flow, collections, functions, modules, OOP</td><td><span class="table-status">Coursework</span></td><td>Extract reusable classes and tests</td></tr>
+            <tr><td>Weather ETL notebook</td><td>API ingestion, JSON extraction, pandas enrichment</td><td><span class="table-status">Prototype</span></td><td>Independent forecasting repository</td></tr>
+            <tr><td>Supermarket ETL</td><td>Validation, rejects, idempotency, reconciliation, tests</td><td><span class="table-status strong">Engineered</span></td><td>Keep scope aligned with its small static dataset</td></tr>
+            <tr><td>Banking SQL lab</td><td>CTEs, windows, functions, joins, null/date handling</td><td><span class="table-status">Practice</span></td><td>Add a reproducible sample schema and query tests</td></tr>
+            <tr><td>Selenium exercises</td><td>Browser automation, selectors, pagination, DataFrames</td><td><span class="table-status">Exploration</span></td><td>Replace sleeps/broad exceptions with robust waits</td></tr>
+            <tr><td>Flask exercise</td><td>Routes, templates, static assets</td><td><span class="table-status">Introduction</span></td><td>Apply to a justified data product</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section next-section" id="next">
+      <div class="next-card reveal">
+        <div>
+          <p class="eyebrow"><span></span> Separate future repository</p>
+          <h2>Egypt Weather Forecasting System</h2>
+          <p>The current-weather ETL notebook is the seed, not the finished ML project. The next repository will collect historical observations, establish time-based baselines, train forecasting models without temporal leakage, expose inference through an API, and present forecasts in a dedicated frontend.</p>
+        </div>
+        <ol class="next-steps">
+          <li><span>01</span><div><strong>Historical data pipeline</strong><small>Scheduled, idempotent ingestion with schema and freshness checks.</small></div></li>
+          <li><span>02</span><div><strong>Forecast evaluation</strong><small>Time splits, seasonal baselines, MAE/RMSE, and city-level errors.</small></div></li>
+          <li><span>03</span><div><strong>ML service</strong><small>Versioned preprocessing, model registry, FastAPI inference, and tests.</small></div></li>
+          <li><span>04</span><div><strong>User experience</strong><small>Forecast dashboard, uncertainty, monitoring, Docker, and cloud deployment.</small></div></li>
+        </ol>
+        <div class="boundary-note"><strong>Repository boundary:</strong> forecasting code will live in its own repository. This DEPI repository documents the learning path and preserves the secure ingestion prototype.</div>
+      </div>
+    </section>
+
+    <section class="section principles-section">
+      <div class="principle reveal"><span>01</span><h3>Show the progression</h3><p>Early exercises remain visible, but their limitations are stated.</p></div>
+      <div class="principle reveal"><span>02</span><h3>Engineer what earns it</h3><p>Testing and infrastructure follow a real product or reliability need.</p></div>
+      <div class="principle reveal"><span>03</span><h3>Measure before claiming</h3><p>Metrics are tied to a specific dataset and reproducible command.</p></div>
+    </section>
+  </main>
+
+  <footer>
+    <div><strong>DEPI Learning Journey</strong><p>Built by Hassan Gebril to document learning with evidence · Deployed on Vercel.</p></div>
+    <div class="footer-links"><a href="https://github.com/HassanG04/DEPI_TASKS" target="_blank" rel="noopener noreferrer">Repository</a><a href="#home">Back to top ↑</a></div>
+  </footer>
+
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>
